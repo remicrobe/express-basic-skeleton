@@ -1,0 +1,45 @@
+name: Deploying
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: executing remote ssh commands using ssh key
+        id: ssh_deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: sh deploy.sh
+
+      - name: Get commit info
+        id: get_commit
+        run: |
+          echo "::set-output name=commit_id::$(git log -1 --format=%H)"
+          echo "::set-output name=commit_message::$(git log -1 --format=%s)"
+
+      - name: Capture SSH output
+        id: capture_output
+        run: echo "::set-output name=ssh_output::$(cat deploy_output.txt)"
+        env:
+          SSH_OUTPUT: ${{ steps.ssh_deploy.outputs.stdout }}
+
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_HOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: |
+            Message : ${{ steps.get_commit.outputs.commit_message }}
+            L'API de Split a été déployée, je l'espère sans bug ;).

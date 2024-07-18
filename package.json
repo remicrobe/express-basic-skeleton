@@ -1,0 +1,51 @@
+{
+  "name": "split-api",
+  "version": "1.0.0",
+  "description": "The split app !",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ts-mocha 'src/test/*.ts' -p tsconfig.json --timeout 30000 --exit",
+    "dev": "nodemon  -e js,ts,env --exec \"ts-node src/index.ts\"",
+    "swagger-autogen": "node swagger.js",
+    "build": "npx tsc",
+    "start": "node build/index.js"
+  },
+  "author": "Rémi WEIL",
+  "license": "ISC",
+  "dependencies": {
+    "and": "^0.0.3",
+    "basic-ftp": "^5.0.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
+    "express-rate-limit": "^7.3.1",
+    "google-auth-library": "^9.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0",
+    "luxon": "^3.4.3",
+    "mysql2": "^3.9.2",
+    "node-cron": "^3.0.3",
+    "sharp": "^0.33.4",
+    "socket.io": "^4.7.4",
+    "swagger-autogen": "^2.23.7",
+    "swagger-stats": "^0.99.7",
+    "swagger-ui-express": "^5.0.0",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.20",
+    "@types/jsonwebtoken": "^9.0.4",
+    "@types/luxon": "^3.3.3",
+    "@types/node": "^20.8.7",
+    "@types/node-cron": "^3.0.11",
+    "@types/swagger-stats": "^0.95.11",
+    "axios": "^1.7.2",
+    "nodemon": "^3.0.1",
+    "socket.io-client": "^4.7.5",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
