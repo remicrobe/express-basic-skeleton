@@ -11,7 +11,7 @@ This project is a starter template for an Express.js application with pre-config
 - **TypeORM**: ORM for various databases.
 - **Swagger**: Auto-generated API documentation.
 - **Local Image Storage**: Configured for storing images locally.
-
+- **Workflow**: Even a workflow is ready to deploy your api :)
 ## 📋 Getting Started
 
 ### Prerequisites
@@ -116,6 +116,9 @@ Use Socket.io for real-time features like chat and notifications.
 ### Image Storage
 
 Images are stored locally based on the `.env` file configuration. Ensure the storage folder path is correctly set.
+
+## 🚀 GitHub Actions Workflow
+You can use the provided GitHub Actions workflow to connect to your server via SSH and execute commands. This is useful for deploying your application or running remote commands automatically.
 
 ## 🤝 Contributing
 
